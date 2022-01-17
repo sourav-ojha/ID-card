@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Preview from "./PDF/Preview";
+import React, { useState } from "react";
 function App() {
+  const [profile, setProfile] = useState({
+    type: "Profile",
+    name: "John Doe",
+    designation: "Junior Developer",
+    profileImageURL: "https://i.imgur.com/f6L6Y57.png",
+    display: true,
+    employeeID: "001",
+    BloodGroup: "O+",
+    DOB: "01-02-1999",
+    contact: "9040674463",
+  });
+
+  const handleChange = (name, value) => {
+    setProfile({ ...profile, [name]: value });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+      }}
+    >
+      {/* <div style={{ width: "50%" }}></div> */}
+      <Preview profile={profile} />
     </div>
   );
 }
